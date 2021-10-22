@@ -6,73 +6,65 @@ In this project, different supervised machine learning (ML) algorithms are used 
 Different techniques are adopted as follows:<br>
 1. **Logistic Regression**:
 As this problem is an unbalanced classification problem (i.e., bad loans less than good loans), resampling methods need to be used to resample training data. Algorithms are applied for resampling as:<br>
-- "*RandomOverSampling*" and "*SMOTE*" algorithms are used for oversampling.<br>
-- "*ClusterCentroids*" algorithm is used for undersampling.<br>
-- "*SMOTEENN*" algorithm is used for over-and under-sampling.<br>
+- "*Random Oversampling*" and "*Synthetic Minority Oversampling Technique (SMOTE)*" approaches are used for oversampling.<br> In the former, to balance the instances of classes, training set is increased by adding instances which are randomly selected from instances of minority class. In the latter, the instances of minority class is increased; however, instances are created by interpolation. In this approach, closest neighbors to instance of minority class is selected and according their values, new instances are created.
+- "*Cluster Centroids*" algorithm is used for undersampling.<br> In undersampling approaches, the number of instances in the majority class is declined. In  *Cluster Centroids* technique, the syntatic data (centroids) representing the clusters is generated using majority class clusters. Then, the size of majority class is decreased by undersampling to be equal to the minority class.<br>
+- "*SMOTEENN*" algorithm which is combination of "*SMOTE*" and "*Edited Nearest Neighbors* (ENN)" methods is used.<br> In this approach, firstly, the minority class is oversampled. Next, the data is cleaned using "*SMOTE*".
 
 2. **Ensemble Classifiers**
 The following ensemble classifiers are compared:
-- "*BalancedRandomForestClassifier*"
-- "*EasyEnsembleClassifier*"
-
-The following steps are performed for each technique:
-
-- Applying basic cleaning to the data.
-- Splitting data into train and test dataset.
-- Training data using the logistic regression and ensemble classifiers (in logistic regression model, resampling algorithm is applied).
-- Testing data.
-- Calculating balanced accuracy score.
-- Calculating confusion matrix.
-- Generating classification report.
+- "*Balanced Random Forest Classifier*"
+- "*Easy Ensemble Classifier*"
 
 ## Results
-**Logistic Regression**
-- Random Oversampling<br>
+### Logistic Regression<br>
+**Random Oversampling**<br>
 
 <p img align="center" width="100%">
-<img width="500" alt="random_oversampling" src="https://user-images.githubusercontent.com/85843401/138348986-e6fbf7f9-8d9a-4f2b-8715-e1731162d3ea.png">
-<figcaption>Figure 1: Balanced accuracy score, confusion matrix, and classification report related to random oversampling algorithm.</figcaption></figure/> 
+<img width="400" alt="random_oversampling" src="https://user-images.githubusercontent.com/85843401/138464624-919f7c75-83eb-4192-bdf2-d8f4ca2d0ec0.png"><figcaption>Figure 1: Balanced accuracy score, confusion matrix, and classification report related to random oversampling algorithm.</figcaption></figure/> 
 <p align="center">
 </p>
 
-- SMOTE Oversampling<br>
+- Balanced accuracy is about 64%.<br>
+- For the high risk, precision and recall (sensitivity) is  1% and 62%, respectively.<br>
+- For the low risk, precision and recall is about 100% and 65%, respectively.<br>
+
+**SMOTE Oversampling**<br>
 
 <p img align="center" width="100%">
-<img width="500" alt="smote_oversampling" src="https://user-images.githubusercontent.com/85843401/138349002-884b574e-8de3-4b8b-9192-3702daffe2f7.png">
+<img width="400" alt="smote_oversampling" src="https://user-images.githubusercontent.com/85843401/138466070-9cf965d9-63aa-4ecf-b676-a3edda533a1f.png">
 <figcaption>Figure 2: Balanced accuracy score, confusion matrix, and classification report related to SMOTE oversampling algorithm.</figcaption></figure/> 
 <p align="center">
 </p>
 
-- Cluster Centroids Undersampling<br>
+**Cluster Centroids Undersampling**<br>
 
 <p img align="center" width="100%">
-<img width="500" alt="undersampling" src="https://user-images.githubusercontent.com/85843401/138349008-328e59f4-c648-4dae-87b7-ecbb2af3dbfa.png">
+<img width="400" alt="undersampling" src="https://user-images.githubusercontent.com/85843401/138466417-897bbd93-a5b2-4278-a404-4adc0b277071.png">
 <figcaption>Figure 3: Balanced accuracy score, confusion matrix, and classification report related to cluster centroids undersampling algorithm.</figcaption></figure/> 
 <p align="center">
 </p>
 
-
-- Combination of Over- and Under- sampling<br>
+**Combination of Over- and Under- sampling**<br>
 
 <p img align="center" width="100%">
-<img width="500" alt="combination" src="https://user-images.githubusercontent.com/85843401/138349021-4c6d20a2-26ab-48c3-a721-99a4d9b789b8.png">
+<img width="400" alt="combination" src="https://user-images.githubusercontent.com/85843401/138466475-e794af81-70d1-4988-a498-1193d0487c0d.png">
 <figcaption>Figure 4: Balanced accuracy score, confusion matrix, and classification report related to combination of over- and under- sampling algorithm.</figcaption></figure/> 
 <p align="center">
 </p>
 
-**Ensemble Classifiers**
-- Balanced Random Forest<br>
+### Ensemble Classifiers<br>
+ **Balanced Random Forest**<br>
 
 <p img align="center" width="100%">
-<img width="500" alt="balanced_randomforesr" src="https://user-images.githubusercontent.com/85843401/138349271-9215528f-b6bd-47ab-8aa8-7c508d8f9826.png">
+<img width="400" alt="balanced_random_forest" src="https://user-images.githubusercontent.com/85843401/138467620-30aaa50a-7dd4-4e37-8460-78eaad36f43c.png">
 <figcaption>Figure 5: Balanced accuracy score, confusion matrix, and classification report related to balanced random forest algorithm.</figcaption></figure/> 
 <p align="center">
 </p>
 
-- Easy Ensemble AdaBooster<br>
+**Easy Ensemble AdaBooster**<br>
 
 <p img align="center" width="100%">
-<img width="500" alt="easy_ensemble" src="https://user-images.githubusercontent.com/85843401/138349283-3c3aeb67-6c74-42c0-878e-07461c06ce0f.png">
+<img width="400" alt="easy_ensemble" src="https://user-images.githubusercontent.com/85843401/138467661-6e4e2155-25a0-4550-8278-4962e517fa1b.png">
 <figcaption>Figure 6: Balanced accuracy score, confusion matrix, and classification report related to easy ensemble AdaBooster algorithm.</figcaption></figure/> 
 <p align="center">
 </p>
